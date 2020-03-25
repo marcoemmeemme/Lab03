@@ -5,9 +5,10 @@
 
 	public class Dictionary {
 		List <String> dizionario=new LinkedList<String>();
-		List <String> list=new ArrayList<String>();
-		List<String> paroleSbagliate=new ArrayList<String>();
-		String ris;
+		List <String> list=new LinkedList<String>();
+		List<String> paroleSbagliate=new LinkedList<String>();
+		private String ris;
+		private int conta;
 		public void loadDictionary(String language)
 		{
 			try
@@ -31,7 +32,7 @@
 		
 		public String spellCheckText(String parola)
 		{
-			this.spezza(parola);
+			list=this.spezza(parola);
 			for(String par:list)
 			{	
 				boolean check=false;
@@ -46,11 +47,12 @@
 			return this.stampa();
 		}
 		
-		public void spezza(String contenuto)
+		public List<String> spezza(String contenuto)
 		{
 			contenuto.replaceAll("[.,\\/#!$%\\^&\\*;:{}=\\-_`~()\\[\\]\"]", "");
 			String[] campi=contenuto.split(" ");
 			list=Arrays.asList(campi);
+			return list;
 		}
 		
 		public String stampa()
@@ -67,13 +69,13 @@
 		
 		public int conta()
 		{
-			return paroleSbagliate.size();
+			conta=paroleSbagliate.size();
+			return conta;
 		}
 		
 		public void reset()
 		{
-			this.dizionario.clear();
-			this.list.clear();
-			this.paroleSbagliate.clear();
+			this.dizionario.removeAll(dizionario);
+			this.paroleSbagliate.removeAll(paroleSbagliate);
 		}
 	}

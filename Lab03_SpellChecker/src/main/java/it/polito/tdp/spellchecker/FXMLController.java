@@ -60,6 +60,7 @@ public class FXMLController {
     	String lingua=sceltaLingua.getValue();
     	dizionario.loadDictionary(lingua);
     	String risultato=dizionario.spellCheckText(contenuto);
+    	areaErrori.clear();
     	areaErrori.setText(risultato);
     	contaErrori.setText("Ci sono "+dizionario.conta()+" errori");
     	long time2=System.nanoTime();
