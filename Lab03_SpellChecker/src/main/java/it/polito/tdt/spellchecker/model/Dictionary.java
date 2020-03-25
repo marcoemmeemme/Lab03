@@ -71,8 +71,6 @@ public class Dictionary {
 	
 	public void reset()
 	{
-		this.dizionario.clear();
-		this.list.clear();
-		this.paroleSbagliate.clear();
+		this.paroleSbagliate.removeAll(paroleSbagliate);
 	}
 }
